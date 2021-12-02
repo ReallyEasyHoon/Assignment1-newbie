@@ -1,22 +1,81 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment demo</title>
+    <title>Assignment</title>
+    <link rel="stylesheet" href="Style.css">
+    <style> 
+    .column header {
+        font-weight: bold;
+    }
+
+
+    </style>
 </head>
+
+
+<canvas id="projector"></canvas>
+<!-- partial:index.partial.html -->
+
+<!-- partial -->
+  <script src='https://code.createjs.com/easeljs-0.7.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script><script  src="./script.js"></script>
 <body>
     <header>
         <nav>
-            <ul>
+            <ul id="menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="Certification.html"></a>Certifications</li>
-                <li><a href="Experience.html"></a>Experience</li>
+                <li><a href="Certification.html">Certifications/Achievements</a></li>
+                <li><a href="Experience.html">Experience</a></li>
+                <li><a href="ContactMe.html">ContactMe</a></li>
+                <li><a href="Resume_Guojun.docx">Resume(Download)</a></li>
             </ul>
         </nav>
     </header>
-    <h1><center>Experiences</center></h1> 
+    <h1><center>Experience</center></h1> 
+
+    <div class = "row">
+        <div class = "column">
+            <img src="AST.jpg" alt="AST" style="width:70%">
+            <header>Academy of Singapore Teachers (AST)</header>
+            <p>I was assigned to Academy Of Singapore Teachers (AST) as intern for 2months when I was still at ITE higher Nitec.
+                 During my internship at AST, my team and I was tasked to complete a project which include Robotic Process Automation(RPA).</p>
+        </div>
+    
+    <div class = "column">
+        <img src="Sliver.jpg" alt="YEP" style="width:70%">
+        <header>Silver infocomm fiesta 2019</header>
+            <p>I was assigned to help elderly in class. As some of the elderly may have problem catching up with the lesson coach.
+                 I remembered helping this elder who don't understand what the coach is teaching, after 1 hour of the lesson the elderly
+                  told me that she don't understand. I have to teach her how to use Wireless@SG app.</p>
+    </div>
+    <div class = "column">
+        <img src="Digital C1inic.jpg" alt="YEP" style="width:50%">
+        <header>Tama Jurong CC</header>
+        <p>This photo was taken as part of the Taman Jurong CC volunteer program. Once a month,
+            my team and I will go to Taman Jurong CC after school to help the elderly who have inquiries regarding their smartphone.
+             I learned some new skill, like communicating with elderly better and  
+             problem which most of the elderly faced after a few months of interacting with them </p>
+    </div>
+    <div class = "column">
+        <img src="YEP(trip).jpg" alt="YEP" style="width:70%">
+        <header>YEP trips to Thailand 2019</header>
+            <p>This photo was taken before we leave Singapore for the YEP trip to Thailand. 
+                Our project for YEP is to build a wall for the children from one of the kindergartens in Chiangmai.
+                 We chose this project because the old wall that was built quite a long time ago has broke. 
+                 For the safety of those children, we decided to build a more sturdy wall that can better protect them from getting injured
+                  (as the kindergarten is located on a roadside)</p>
+    </div>
+    <div class = "column">
+        <img src="Ace.jpg" alt="TamaJurong" style="width:70%">
+        <header>ACE Team Project 2020</header>
+        <p> This photo was taken as part of the ACE team project. 
+            We organized a Zoom meeting with the elderly from Taman Jurong CC to let them know more about cybersecurity and
+             teach them how to edit videos using VivaCut. I learned new app like VIvaCut which is for video editing. </p>
+    </div>
+    </div>
     
     
 </body>

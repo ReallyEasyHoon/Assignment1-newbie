@@ -1,22 +1,165 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment demo</title>
+    <title>Assignment</title>
+    <link rel="stylesheet" href="Style.css">
+   
 </head>
+
+<canvas id="projector"></canvas>
+<!-- partial:index.partial.html -->
+
+<!-- partial -->
+  <script src='https://code.createjs.com/easeljs-0.7.1.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js'></script><script  src="./script.js"></script>
 <body>
     <header>
         <nav>
-            <ul>
+            <ul id = "menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="Certification.html"></a>Certifications</li>
-                <li><a href="Experience.html"></a>Experience</li>
+                <li><a href="Certification.html">Certifications/Achievements</a></li>
+                <li><a href="Experience.html">Experience</a></li>
+                <li><a href="ContactMe.html">ContactMe</a></li>
+                <li><a href="Resume_Guojun.docx">Resume(Download)</a></li>
+                
             </ul>
         </nav>
     </header>
     <h1><center>Certifications</center></h1> 
+
+    
+    <div class = "row">
+        <div class = "column">
+            <img src="DirectorList.jpg" alt="CCNA" style="width:70%" >
+            <br>
+            <b>Director List</b>
+            <p>Achieved 2019-2020</p>
+        </div>
+        <div class = "column">
+            <img src="Edusave Academic Achievement.jpg" alt="Netoworking" style="width:70%">
+            <br>
+            <b>Edusave Academic Achievement</b>
+            <p>Achieved on 2020</p>
+        </div>
+        <div class = "column">
+            <img src="ITE Digitalisation Challenge 2020.jpg" alt="IT Essentials" style="width:70%">
+            <br>
+            <b>ITE Digitalisation Challenge</b>
+            <p>Achieved on 2020</p>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "column">
+            <img src="ICT Club Exco.jpg" alt="UiPath" style="width:70%">
+            <br>
+            <b>ICT Club Exco(Deputy Chairman)</b>
+            <p>Achieved on 2020</p>
+        </div>
+        <div class = "column">
+            <img src="Uipath_foundation.jpg" alt="CyberSecurity" style="width:70%">
+            <br>
+            <b>Uipath Foundation</b>
+            <p>Completed on 2020</p>
+        </div>
+        <div class = "column">
+            <img src="CyberSecurity.jpg" alt="Java" style="width:70%">
+            <br>
+            <b>CyberSecurity</b>
+            <p>Completed on 2019</p>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "column">
+            <img src="AWS Training & Certification.jpg" alt="Challenge" style="width:70%">
+            <br>
+            <b>AWS Training & Certification</b>
+            <p>Completed on 2019</p>
+        </div>
+        <div class = "column">
+            <img src="Tama Jurong MakeFest .jpg" alt="DSLR" style="width:70%">
+            <br>
+            <b>Tama Jurong MakeFest</b>
+            <p>Achieved on 2019</p>
+        </div>
+        <div class = "column">
+            <img src="Youth Expedition Programme.jpg" alt="AWS" style="width:70%">
+            <br>
+            <b>Youth Expedition Programme</b>
+            <p>Achieved on 2019</p>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "column">
+            <img src="Silver Infocomm Fiesta.jpg" alt="Challenge" style="width:70%">
+            <br>
+            <b>Silver Infocomm Fiesta</b>
+            <p>Completed on 2019</p>
+        </div>
+        <div class = "column">
+            <img src="Digital Clinic.jpg" alt="DSLR" style="width:70%">
+            <br>
+            <b>Digital Clinic</b>
+            <p>Achieved on 2019</p>
+        </div>
+        <div class = "column">
+            <img src="Data Analytics Challenge.jpg" alt="AWS" style="width:70%">
+            <br>
+            <b>Data Analytics Challenge</b>
+            <p>Achieved on 2019</p>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "column">
+            <img src="DSLR Photography.jpeg" alt="Challenge" style="width:70%">
+            <br>
+            <b>DSLR Photography</b>
+            <p>Completed on 2019</p>
+        </div>
+        <div class = "column">
+            <img src="Edusave Good Progress Award.jpg" alt="DSLR" style="width:70%">
+            <br>
+            <b>Edusave Good Progress Award</b>
+            <p>Achieved on 2018/</p>
+        </div>
+        <div class = "column">
+            <img src="Networking and System Administration.jpg"" alt="AWS" style="width:70%">
+            <br>
+            <b>Networking and System Administration</b>
+            <p>Completed on 2018</p>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "column">
+            <img src="Service and Enrichment Programmes.jpeg" alt="Challenge" style="width:70%">
+            <br>
+            <b>Service and Enrichment Programmes</b>
+            <p>Achieved on 2017</p>
+        </div>
+        <div class = "column">
+            <img src="Essentials of Java Programming.jpg" alt="DSLR" style="width:70%">
+            <br>
+            <b>Essentials of Java Programming</b>
+            <p>Achieved on 2017</p>
+        </div>
+        <div class = "column">
+            <img src="CCNA.jpeg" alt="AWS" style="width:70%">
+            <br>
+            <b>CCNA Routing and Switching:Introduction to Networks</b>
+            <p>Completed on 2018</p>
+        </div>
+    </div>
+    <div class = "row">
+        <div class = "column">
+            <img src="IT Essentials.jpeg" alt="Challenge" style="width:70%">
+            <br>
+            <b>IT Essentials</b>
+            <p>Achieved on 2017</p>
+
+    
+    
     
     
 </body>
