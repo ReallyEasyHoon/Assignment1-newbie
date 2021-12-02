@@ -1,4 +1,4 @@
-
+/*This is for Index*/
 html, body {
 	width:100%; 
 	height:100%; 
@@ -80,6 +80,7 @@ ul#menu li {
       }
           
       h1 {
+          text-align: center;
           border-bottom-style: solid;
           border-bottom-color: rgb(27, 255, 255);
            }
