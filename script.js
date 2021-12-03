@@ -1,16 +1,16 @@
-////////////////////////// PARTICLE ENGINE ////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
 
-var ParticleEngine = (function() {
+var Particle = (function() {
 	'use strict';
 
-	function ParticleEngine(canvas_id) {
-		// enforces new
-		if (!(this instanceof ParticleEngine)) {
-			return new ParticleEngine(args);
+	function Particle(canvas_id) {
+		
+		if (!(this instanceof Particle)) {
+			return new Particle(args);
 		}
 
-		var _ParticleEngine = this;
+
+		var _Particle = this;
+
 
 		this.canvas_id = canvas_id;
 		this.stage = new createjs.Stage(canvas_id);
@@ -18,61 +18,72 @@ var ParticleEngine = (function() {
 		this.totalHeight = this.canvasHeight = document.getElementById(canvas_id).height = document.getElementById(canvas_id).offsetHeight;
 		this.compositeStyle = "lighter";
 
+
+
+
 		this.particleSettings = [{id:"small", num:300, fromX:0, toX:this.totalWidth, ballwidth:3, alphamax:0.4, areaHeight:.5, color:"#5afafa", fill:false}, 
 								{id:"medium", num:100, fromX:0, toX:this.totalWidth,  ballwidth:8, alphamax:0.3, areaHeight:1, color:"#FF69B4", fill:true}, 
 								{id:"large", num:10, fromX:0, toX:this.totalWidth, ballwidth:30,  alphamax:0.2, areaHeight:1, color:"#FFC0CB", fill:true}];
 		this.particleArray = [];
-		this.lights = [{ellipseWidth:400, ellipseHeight:100, alpha:0.6, offsetX:0, offsetY:0, color:"#D0D0D0"}, 
-						{ellipseWidth:350, ellipseHeight:250, alpha:0.3, offsetX:-50, offsetY:0, color:"#B8B8B8"}, 
-						{ellipseWidth:100, ellipseHeight:80, alpha:0.2, offsetX:80, offsetY:-50, color:"#F8F8F8"}];
+		this.lights = [{Width:400, Height:100, alpha:0.6, offsetX:0, offsetY:0, color:"#D0D0D0"}, 
+						{Width:350, Height:250, alpha:0.3, offsetX:-50, offsetY:0, color:"#B8B8B8"}, 
+						{Width:100, Height:80, alpha:0.2, offsetX:80, offsetY:-50, color:"#F8F8F8"}];
 
-		this.stage.compositeOperation = _ParticleEngine.compositeStyle;
+		this.stage.compositeOperation = _Particle.compositeStyle;
 
 
-		function drawBgLight()
+
+
+		function Light()
 		{
 			var light;
 			var bounds;
 			var blurFilter;
-			for (var i = 0, len = _ParticleEngine.lights.length; i < len; i++) {				
+			for (var i = 0, len = _Particle.lights.length; i < len; i++) {				
 				light = new createjs.Shape();
-				light.graphics.beginFill(_ParticleEngine.lights[i].color).drawEllipse(0, 0, _ParticleEngine.lights[i].ellipseWidth, _ParticleEngine.lights[i].ellipseHeight);
-				light.regX = _ParticleEngine.lights[i].ellipseWidth/2;
-				light.regY = _ParticleEngine.lights[i].ellipseHeight/2; 
-				light.y = light.initY = _ParticleEngine.totalHeight/2 + _ParticleEngine.lights[i].offsetY;
-				light.x = light.initX =_ParticleEngine.totalWidth/2 + _ParticleEngine.lights[i].offsetX;
+				light.graphics.beginFill(_Particle.lights[i].color).drawEllipse(0, 0, _Particle.lights[i].Width, _Particle.lights[i].Height);
+				light.regX = _Particle.lights[i].Width/2;
+				light.regY = _Particle.lights[i].Height/2; 
+				light.y = light.initY = _Particle.totalHeight/2 + _Particle.lights[i].offsetY;
+				light.x = light.initX =_Particle.totalWidth/2 + _Particle.lights[i].offsetX;
 
-				blurFilter = new createjs.BlurFilter(_ParticleEngine.lights[i].ellipseWidth, _ParticleEngine.lights[i].ellipseHeight, 1);
+				blurFilter = new createjs.BlurFilter(_Particle.lights[i].Width, _Particle.lights[i].Height, 1);
 				bounds = blurFilter.getBounds();
 				light.filters = [blurFilter];
-				light.cache(bounds.x-_ParticleEngine.lights[i].ellipseWidth/2, bounds.y-_ParticleEngine.lights[i].ellipseHeight/2, bounds.width*2, bounds.height*2);
-				light.alpha = _ParticleEngine.lights[i].alpha;
+				light.cache(bounds.x-_Particle.lights[i].Width/2, bounds.y-_Particle.lights[i].Height/2, bounds.width*2, bounds.height*2);
+				light.alpha = _Particle.lights[i].alpha;
 
 				light.compositeOperation = "screen";
-				_ParticleEngine.stage.addChildAt(light, 0);
+				_Particle.stage.addChildAt(light, 0);
 
-				_ParticleEngine.lights[i].elem = light;
+				_Particle.lights[i].elem = light;
 			}
 
-			TweenMax.fromTo(_ParticleEngine.lights[0].elem, 10, {scaleX:1.5, x:_ParticleEngine.lights[0].elem.initX, y:_ParticleEngine.lights[0].elem.initY},{yoyo:true, repeat:-1, ease:Power1.easeInOut, scaleX:2, scaleY:0.7});
-			TweenMax.fromTo(_ParticleEngine.lights[1].elem, 12, { x:_ParticleEngine.lights[1].elem.initX, y:_ParticleEngine.lights[1].elem.initY},{delay:5, yoyo:true, repeat:-1, ease:Power1.easeInOut, scaleY:2, scaleX:2, y:_ParticleEngine.totalHeight/2-50, x:_ParticleEngine.totalWidth/2+100});
-			TweenMax.fromTo(_ParticleEngine.lights[2].elem, 8, { x:_ParticleEngine.lights[2].elem.initX, y:_ParticleEngine.lights[2].elem.initY},{delay:2, yoyo:true, repeat:-1, ease:Power1.easeInOut, scaleY:1.5, scaleX:1.5, y:_ParticleEngine.totalHeight/2, x:_ParticleEngine.totalWidth/2-200});
+
+			TweenMax.fromTo(_Particle.lights[0].elem, 10, {scaleX:1.5, x:_Particle.lights[0].elem.initX, y:_Particle.lights[0].elem.initY},{yoyo:true, repeat:-1, ease:Power1.easeInOut, scaleX:2, scaleY:0.7});
+			TweenMax.fromTo(_Particle.lights[1].elem, 12, { x:_Particle.lights[1].elem.initX, y:_Particle.lights[1].elem.initY},{delay:5, yoyo:true, repeat:-1, ease:Power1.easeInOut, scaleY:2, scaleX:2, y:_Particle.totalHeight/2-50, x:_Particle.totalWidth/2+100});
+			TweenMax.fromTo(_Particle.lights[2].elem, 8, { x:_Particle.lights[2].elem.initX, y:_Particle.lights[2].elem.initY},{delay:2, yoyo:true, repeat:-1, ease:Power1.easeInOut, scaleY:1.5, scaleX:1.5, y:_Particle.totalHeight/2, x:_Particle.totalWidth/2-200});
 		}
+
+
 		
 		var blurFilter;
 		function drawParticles(){
 
-			for (var i = 0, len = _ParticleEngine.particleSettings.length; i < len; i++) {
-				var ball = _ParticleEngine.particleSettings[i];
+			for (var i = 0, len = _Particle.particleSettings.length; i < len; i++) {
+				var ball = _Particle.particleSettings[i];
 
 				var circle;
 				for (var s = 0; s < ball.num; s++ )
 				{
+				
+				
 					circle = new createjs.Shape();
 					if(ball.fill){
 						circle.graphics.beginFill(ball.color).drawCircle(0, 0, ball.ballwidth);
 						blurFilter = new createjs.BlurFilter(ball.ballwidth/2, ball.ballwidth/2, 1);
 						circle.filters = [blurFilter];
+				
 						var bounds = blurFilter.getBounds();
 						circle.cache(-50+bounds.x, -50+bounds.y, 100+bounds.width, 100+bounds.height);
 					}else{
@@ -84,30 +95,38 @@ var ParticleEngine = (function() {
 					circle.distance = ball.ballwidth * 2;
 					circle.ballwidth = ball.ballwidth;
 					circle.flag = ball.id;
-					_ParticleEngine.applySettings(circle, ball.fromX, ball.toX, ball.areaHeight);
+					_Particle.applySettings(circle, ball.fromX, ball.toX, ball.areaHeight);
 					circle.speed = range(2, 10);
 					circle.y = circle.initY;
 					circle.x = circle.initX;
 					circle.scaleX = circle.scaleY = range(0.3, 1);
 
-					_ParticleEngine.stage.addChild(circle);
+					_Particle.stage.addChild(circle);
 					
 
 					animateBall(circle);
 
-					_ParticleEngine.particleArray.push(circle);
+					_Particle.particleArray.push(circle);
 				}
+
+
 			}	
+
+
+
 		}
 
 		this.applySettings = function(circle, positionX, totalWidth, areaHeight)
+
 		{
 			circle.speed = range(1, 3);
-			circle.initY = weightedRange(0, _ParticleEngine.totalHeight , 1, [_ParticleEngine.totalHeight * (2-areaHeight/2)/4, _ParticleEngine.totalHeight*(2+areaHeight/2)/4], 0.8 );
+			circle.initY = weightedRange(0, _Particle.totalHeight , 1, [_Particle.totalHeight * (2-areaHeight/2)/4, _Particle.totalHeight*(2+areaHeight/2)/4], 0.8 );
 			circle.initX = weightedRange(positionX, totalWidth, 1, [positionX+ ((totalWidth-positionX))/4, positionX+ ((totalWidth-positionX)) * 3/4], 0.6);
 		}
 
+
 		function animateBall(ball)
+
 		{
 			var scale = range(0.3, 1);
 			var xpos = range(ball.initX - ball.distance, ball.initX + ball.distance);
@@ -117,59 +136,68 @@ var ParticleEngine = (function() {
 			TweenMax.to(ball, speed/2, {alpha:range(0.1, ball.alphaMax), onComplete:fadeout, onCompleteParams:[ball, speed]});	
 		}	
 
+
 		function fadeout(ball, speed)
+
 		{
+
 			ball.speed = range(2, 10);
 			TweenMax.to(ball, speed/2, {alpha:0 });
 		}
 
-		drawBgLight();
+		Light();
+
 		drawParticles();
 	}
 
-	ParticleEngine.prototype.render = function()
+	Particle.prototype.render = function()
+
 	{
 		this.stage.update();
 	}
 
-	ParticleEngine.prototype.resize = function()
+	Particle.prototype.resize = function()
+
 	{
 		this.totalWidth = this.canvasWidth = document.getElementById(this.canvas_id).width = document.getElementById(this.canvas_id).offsetWidth;
 		this.totalHeight = this.canvasHeight = document.getElementById(this.canvas_id).height = document.getElementById(this.canvas_id).offsetHeight;
 		this.render();
 
 		for (var i= 0, length = this.particleArray.length; i < length; i++)
+
 		{
 			this.applySettings(this.particleArray[i], 0, this.totalWidth, this.particleArray[i].areaHeight);
 		}
 
-		for (var j = 0, len = this.lights.length; j < len; j++) {
+		for (var j = 0, len = this.lights.length; j < len; j++)
+		 {
 			this.lights[j].elem.initY = this.totalHeight/2 + this.lights[j].offsetY;
 			this.lights[j].elem.initX =this.totalWidth/2 + this.lights[j].offsetX;
 			TweenMax.to(this.lights[j].elem, .5, {x:this.lights[j].elem.initX, y:this.lights[j].elem.initY});			
 		}
 	}
 
-	return ParticleEngine;
+	return Particle;
 
 }());
 
 
-////////////////////////UTILS//////////////////////////////////////
-//////////////////////////////////////////////////////////////////
 
 function range(min, max)
+
 {
 	return min + (max - min) * Math.random();
 }
 		
 function round(num, precision)
+
 {
    var decimal = Math.pow(10, precision);
    return Math.round(decimal* num) / decimal;
 }
 
 function weightedRange(to, from, decimalPlaces, weightedRange, weightStrength)
+
 {
 	if (typeof from === "undefined" || from === null) { 
 	    from = 0; 
@@ -186,29 +214,32 @@ function weightedRange(to, from, decimalPlaces, weightedRange, weightStrength)
 
    var ret
    if(to == from){return(to);}
+
  
    if(weightedRange && Math.random()<=weightStrength){
 	  ret = round( Math.random()*(weightedRange[1]-weightedRange[0]) + weightedRange[0], decimalPlaces )
    }else{
 	  ret = round( Math.random()*(to-from)+from, decimalPlaces )
+
    }
    return(ret);
 }
 
-///////////////// RUN CODE //////////////////////////
-//////////////////////////////////////////////////////
 
 var particles
-(function(){
-	particles = new ParticleEngine('projector');
+(function()
+{
+	particles = new Particle('projector');
 	createjs.Ticker.addEventListener("tick", updateCanvas);
 	window.addEventListener('resize', resizeCanvas, false);
 
-	function updateCanvas(){
+	function updateCanvas()
+	{
 		particles.render();
 	}
 
-	function resizeCanvas(){
+	function resizeCanvas()
+	{
 		particles.resize();
 	}
 }());
